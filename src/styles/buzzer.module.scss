@@ -1,0 +1,30 @@
+.button {
+  width: 500px;
+  height: 500px;
+  outline-width: 0;
+
+  &:active .svg-button {
+    filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.svg {
+  transform: rotateX(25deg);
+  cursor: pointer;
+
+
+}
+
+.svg-inner {
+  transform-origin: center;
+  transform: scale(0.8);
+}
+
+.svg-button {
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.svg-shine {
+  transform: rotate(-36deg) translateY(-34%);
+  transform-origin: center;
+}
