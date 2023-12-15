@@ -7,11 +7,9 @@ import { SelectOption, BuzzerOptions } from '@/lib/definitions'
 export default function BuzzerSelect({
   selectedBuzzerValue,
   handleChange,
-  className,
 }: {
   selectedBuzzerValue: SelectOption['value']
   handleChange: (e: SelectChangeEvent) => void
-  className: string
 }) {
   const buzzerOptions = BuzzerOptions.map((option) => (
     <MenuItem key={option.value} value={option.value}>
@@ -20,7 +18,7 @@ export default function BuzzerSelect({
   ))
 
   return (
-    <FormControl className={className} fullWidth>
+    <FormControl fullWidth>
       <InputLabel id="buzzer-label">Buzzer</InputLabel>
       <Select
         labelId="buzzer-label"

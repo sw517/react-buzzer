@@ -34,11 +34,12 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <div className="w-full">
-        <BuzzerSelect
-          selectedBuzzerValue={selectedBuzzerValue}
-          handleChange={handleBuzzerChange}
-          className="mb-8"
-        />
+        <div className="mb-8">
+          <BuzzerSelect
+            selectedBuzzerValue={selectedBuzzerValue}
+            handleChange={handleBuzzerChange}
+          />
+        </div>
         <ColorSelect
           selectedColorValue={selectedColorValue}
           handleChange={handleColorChange}

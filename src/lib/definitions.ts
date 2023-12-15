@@ -9,7 +9,7 @@ export const ColorOptions: SelectOption[] = [
     text: 'Red',
   },
   {
-    value: 'blue',
+    value: '#1976d2',
     text: 'Blue',
   },
   {

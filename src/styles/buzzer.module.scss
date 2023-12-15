@@ -7,7 +7,7 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   transition: transform ease 0.2s;
-  touch-action: none;
+  touch-action: manipulation;
 
   &:active  {
     transform: translateY(5px);
