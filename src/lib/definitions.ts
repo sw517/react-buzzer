@@ -1,23 +1,42 @@
-export interface BuzzerOption {
+export interface SelectOption {
   text: string
-  id: string
-  color: string
+  value: string
 }
 
-export const BuzzerOptions: BuzzerOption[] = [
+export const ColorOptions: SelectOption[] = [
   {
-    id: '1',
-    text: 'Buzzer 1',
-    color: 'red',
+    value: 'red',
+    text: 'Red',
   },
   {
-    id: '2',
-    text: 'Buzzer 2',
-    color: 'blue',
+    value: 'blue',
+    text: 'Blue',
   },
   {
-    id: '3',
-    text: 'Buzzer 3',
-    color: 'purple',
+    value: 'purple',
+    text: 'Purple',
+  },
+  {
+    value: 'pink',
+    text: 'Pink',
+  },
+]
+
+export const BuzzerOptions: SelectOption[] = [
+  {
+    value: 'yay.mp3',
+    text: 'Yay',
+  },
+  {
+    value: 'pipe.mp3',
+    text: 'Pipe',
+  },
+  {
+    value: 'scream.mp3',
+    text: 'Scream',
+  },
+  {
+    value: 'spring.mp3',
+    text: 'Spring',
   },
 ]

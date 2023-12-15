@@ -1,21 +1,31 @@
 import { Inter } from 'next/font/google'
 import BuzzerSelect from '@/ui/buzzer-select'
+import ColorSelect from '@/ui/color-select'
 import BuzzerButton from '@/ui/buzzer-button'
 import { useState } from 'react'
 import { SelectChangeEvent } from '@mui/material/Select'
-import { BuzzerOptions } from '@/lib/definitions'
+import { BuzzerOptions, ColorOptions } from '@/lib/definitions'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [selectedBuzzerId, setSelectedBuzzerId] = useState(BuzzerOptions[0].id)
+  const [selectedBuzzerValue, setSelectedBuzzerValue] = useState(
+    BuzzerOptions[0].value
+  )
+  const [selectedColorValue, setSelectedColorValue] = useState(
+    ColorOptions[0].value
+  )
 
-  const handleChange = (e: SelectChangeEvent) => {
-    setSelectedBuzzerId(e.target.value)
+  const handleBuzzerChange = (e: SelectChangeEvent) => {
+    setSelectedBuzzerValue(e.target.value)
+  }
+
+  const handleColorChange = (e: SelectChangeEvent) => {
+    setSelectedColorValue(e.target.value)
   }
 
   const handlePlay = () => {
-    const audio = new Audio('/audio/yay.mp3')
+    const audio = new Audio(`/audio/${selectedBuzzerValue}`)
     audio.play()
   }
 
@@ -23,11 +33,21 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      <BuzzerSelect
-        selectedBuzzerId={selectedBuzzerId}
-        handleChange={handleChange}
+      <div className="w-full">
+        <BuzzerSelect
+          selectedBuzzerValue={selectedBuzzerValue}
+          handleChange={handleBuzzerChange}
+          className="mb-8"
+        />
+        <ColorSelect
+          selectedColorValue={selectedColorValue}
+          handleChange={handleColorChange}
+        />
+      </div>
+      <BuzzerButton
+        selectedColorValue={selectedColorValue}
+        onPlay={handlePlay}
       />
-      <BuzzerButton selectedBuzzerId={selectedBuzzerId} onPlay={handlePlay} />
     </main>
   )
 }

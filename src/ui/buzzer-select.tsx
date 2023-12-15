@@ -2,35 +2,31 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { BuzzerOption } from '@/lib/definitions'
+import { SelectOption, BuzzerOptions } from '@/lib/definitions'
 
 export default function BuzzerSelect({
-  selectedBuzzerId,
+  selectedBuzzerValue,
   handleChange,
+  className,
 }: {
-  selectedBuzzerId: BuzzerOption['id']
+  selectedBuzzerValue: SelectOption['value']
   handleChange: (e: SelectChangeEvent) => void
+  className: string
 }) {
-  const buzzerItems = [
-    { id: '1', text: 'Buzzer 1' },
-    { id: '2', text: 'Buzzer 2' },
-    { id: '3', text: 'Buzzer 3' },
-  ]
-
-  const buzzerOptions = buzzerItems.map((item) => (
-    <MenuItem key={item.id} value={item.id}>
-      {item.text}
+  const buzzerOptions = BuzzerOptions.map((option) => (
+    <MenuItem key={option.value} value={option.value}>
+      {option.text}
     </MenuItem>
   ))
 
   return (
-    <FormControl fullWidth>
+    <FormControl className={className} fullWidth>
       <InputLabel id="buzzer-label">Buzzer</InputLabel>
       <Select
         labelId="buzzer-label"
         id="buzzer-select"
         label="Buzzer"
-        value={selectedBuzzerId}
+        value={selectedBuzzerValue}
         onChange={handleChange}
       >
         {buzzerOptions}
