@@ -9,6 +9,14 @@ export const ColorOptions: SelectOption[] = [
     text: 'Red',
   },
   {
+    value: 'orange',
+    text: 'Orange',
+  },
+  {
+    value: '#d6d60d',
+    text: 'Yellow',
+  },
+  {
     value: '#1976d2',
     text: 'Blue',
   },
@@ -17,9 +25,13 @@ export const ColorOptions: SelectOption[] = [
     text: 'Purple',
   },
   {
-    value: 'pink',
+    value: '#f5609a',
     text: 'Pink',
   },
+  // {
+  //   value: 'custom',
+  //   text: 'Custom',
+  // },
 ]
 
 export const BuzzerOptions: SelectOption[] = [
