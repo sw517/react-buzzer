@@ -16,6 +16,11 @@
       filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
     }
   }
+
+  &--small {
+    width: 30vw;
+    height: 30vw;
+  }
 }
 
 .svg {

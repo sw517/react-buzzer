@@ -1,20 +1,19 @@
-import { ColorOptions, SelectOption } from '@/lib/definitions'
+import { SelectOption } from '@/lib/definitions'
 import buzzerStyles from '@/styles/buzzer.module.scss'
-import { KeyboardEvent, TouchEvent } from 'react'
+import { KeyboardEvent, TouchEvent, HTMLProps } from 'react'
+
+interface BuzzerButtonProps extends HTMLProps<HTMLDivElement> {
+  selectedColorValue: SelectOption['value']
+  onPlay: () => void
+  small?: boolean
+}
 
 export default function BuzzerButton({
   selectedColorValue,
   onPlay,
-}: {
-  selectedColorValue: SelectOption['value']
-  onPlay: () => void
-}) {
-  const selectedColor = ColorOptions.find(
-    (b: SelectOption) => b.value === selectedColorValue
-  )
-
-  if (!selectedColor) return null
-
+  small,
+  className,
+}: BuzzerButtonProps) {
   const onTouchStart = (e: TouchEvent) => {
     e.preventDefault()
     onPlay()
@@ -38,7 +37,9 @@ export default function BuzzerButton({
 
   return (
     <button
-      className={buzzerStyles.button}
+      className={`${className} ${buzzerStyles.button} ${
+        small && buzzerStyles['button--small']
+      }`}
       onMouseDown={onPlay}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
@@ -55,7 +56,7 @@ export default function BuzzerButton({
             cx="50%"
             cy="50%"
             r="50%"
-            fill={selectedColor.value}
+            fill={selectedColorValue}
             className={buzzerStyles['svg-button']}
           />
           <ellipse

@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+  }
+}
+
+.spacer {
+  display: block;
+
+  @media (orientation: portrait) {
+    margin-top: 20px;
+  }
+
+  @media (orientation: landscape) {
+    margin-left: 20px;
+  }
+}

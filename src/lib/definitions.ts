@@ -28,10 +28,10 @@ export const ColorOptions: SelectOption[] = [
     value: '#f5609a',
     text: 'Pink',
   },
-  // {
-  //   value: 'custom',
-  //   text: 'Custom',
-  // },
+  {
+    value: 'custom',
+    text: 'Custom',
+  },
 ]
 
 export const BuzzerOptions: SelectOption[] = [
