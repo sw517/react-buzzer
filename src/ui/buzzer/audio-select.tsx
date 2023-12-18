@@ -1,4 +1,6 @@
-import { InputLabel, MenuItem, FormControl } from '@mui/material'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select'
 import { SelectOption, BuzzerOptions } from '@/lib/definitions'
 

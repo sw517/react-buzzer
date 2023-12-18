@@ -4,7 +4,8 @@ import ColorPickerModal from './color-picker-modal'
 import BuzzerButton from './button'
 import { useState } from 'react'
 import { SelectChangeEvent, SelectProps } from '@mui/material/Select'
-import { Avatar, Button } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
 import { BuzzerOptions, ColorOptions } from '@/lib/definitions'
 
 export default function Buzzer({
