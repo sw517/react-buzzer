@@ -1,17 +1,13 @@
 import { Inter } from 'next/font/google'
 import Buzzer from '@/ui/buzzer'
-import { Box, Typography, Modal, Button } from '@mui/material'
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import { useState, MouseEvent } from 'react'
 import styles from '@/styles/head-to-head.module.scss'
 
 const inter = Inter({ subsets: ['latin'] })
-const buzzerBoxStyles = {
-  border: '1px solid',
-  borderColor: 'text.primary',
-  p: 4,
-  borderRadius: 3,
-  width: '100%',
-}
 const modalBoxStyle = {
   position: 'absolute',
   top: '10%',
@@ -50,19 +46,22 @@ export default function HeadToHead() {
     <main
       className={`flex min-h-screen pt-24 px-8 pb-8 ${inter.className} ${styles['main']}`}
     >
-      <Box sx={buzzerBoxStyles}>
-        <Typography variant="subtitle1" className="mb-4">
-          Player 1
-        </Typography>
-        <Buzzer id="Player 1" size="small" onPress={onPress} />
-      </Box>
+      <Buzzer
+        id="Player 1"
+        size="small"
+        outlined
+        allowRotate
+        onPress={onPress}
+      />
       <div className={styles.spacer} />
-      <Box sx={buzzerBoxStyles}>
-        <Typography variant="subtitle1" className="mb-4">
-          Player 2
-        </Typography>
-        <Buzzer id="Player 2" size="small" onPress={onPress} />
-      </Box>
+      <Buzzer
+        id="Player 2"
+        size="small"
+        outlined
+        allowRotate
+        onPress={onPress}
+      />
+
       <Modal open={modalOpen} onClose={handleModalClose}>
         <Box sx={modalBoxStyle}>
           <Typography variant="h5">{lastBuzzerId} has buzzed in!</Typography>

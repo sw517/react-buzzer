@@ -1,3 +1,28 @@
+.root--outlined {
+  border: solid currentColor 1px;
+  border-radius: 12px;
+}
+
+.inner--rotate-90 {
+  transform: rotate(90deg);
+}
+
+.inner--rotate-180 {
+  transform: rotate(180deg);
+}
+
+.inner--rotate-270 {
+  transform: rotate(270deg);
+}
+
+.inner--sideways {
+  height: 100vi;
+}
+
+.inner--outlined {
+  padding: 24px;
+}
+
 .button {
   width: 90vw;
   height: 90vw;
