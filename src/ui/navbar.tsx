@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, TouchEvent, useRef } from 'react'
 import {
   AppBar,
   Box,
@@ -13,6 +13,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import GraphicEqIcon from '@mui/icons-material/GraphicEq'
 import Link from 'next/link'
+import EasterEgg from './easter-egg'
 
 const pages = [
   { title: 'Buzzer', href: '/' },
@@ -23,6 +24,9 @@ const title = 'Buzzy McBuzzer'
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
+  const logoTouchTime = useRef(0)
+  const logoTouchTimeInterval = useRef<number>()
+  const [showEasterEgg, setShowEasterEgg] = useState(false)
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -30,6 +34,33 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
+  }
+
+  const clearUpEasterEgg = () => {
+    setShowEasterEgg(false)
+    if (logoTouchTimeInterval.current) {
+      window.clearInterval(logoTouchTimeInterval.current)
+    }
+  }
+
+  const onLogoTouchStart = (e: TouchEvent) => {
+    e.preventDefault()
+    const intervalId = window.setInterval(() => {
+      if (logoTouchTime.current < 6) {
+        logoTouchTime.current = logoTouchTime.current + 1
+      } else {
+        setShowEasterEgg(true)
+        setTimeout(() => {
+          clearUpEasterEgg()
+        }, 5000)
+      }
+    }, 1000)
+    logoTouchTimeInterval.current = intervalId
+  }
+
+  const onLogoTouchEnd = (e: TouchEvent) => {
+    e.preventDefault()
+    clearUpEasterEgg
   }
 
   return (
@@ -93,7 +124,11 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <GraphicEqIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <GraphicEqIcon
+            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+            onTouchStart={onLogoTouchStart}
+            onTouchEnd={onLogoTouchEnd}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -128,6 +163,7 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      {showEasterEgg && <EasterEgg />}
     </AppBar>
   )
 }
