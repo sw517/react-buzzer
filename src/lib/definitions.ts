@@ -51,4 +51,12 @@ export const BuzzerOptions: SelectOption[] = [
     value: 'spring.mp3',
     text: 'Spring',
   },
+  {
+    value: 'man-scream.mp3',
+    text: 'Man Scream',
+  },
+  {
+    value: 'helicopter-goat.mp3',
+    text: 'Helicopter Goat',
+  },
 ]
