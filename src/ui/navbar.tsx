@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { useState, MouseEvent, TouchEvent, useRef } from 'react'
 import {
   AppBar,
@@ -13,7 +14,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import GraphicEqIcon from '@mui/icons-material/GraphicEq'
 import Link from 'next/link'
-import EasterEgg from './easter-egg'
+const EasterEgg = dynamic(() => import('./easter-egg'), { ssr: false })
 
 const pages = [
   { title: 'Buzzer', href: '/' },
@@ -37,12 +38,12 @@ function ResponsiveAppBar() {
   }
 
   const clearUpEasterEgg = () => {
-    setShowEasterEgg(false)
     logoTouchTime.current = 0
     if (logoTouchTimeInterval.current) {
       window.clearInterval(logoTouchTimeInterval.current)
       logoTouchTimeInterval.current = undefined
     }
+    setShowEasterEgg(false)
   }
 
   const onLogoTouchStart = (e: TouchEvent) => {
@@ -167,7 +168,7 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
-      {showEasterEgg && <EasterEgg />}
+      <EasterEgg show={showEasterEgg} />
     </AppBar>
   )
 }

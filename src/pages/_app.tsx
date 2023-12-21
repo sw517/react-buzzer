@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Navbar from '@/ui/navbar'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useMemo } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')

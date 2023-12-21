@@ -1,22 +1,22 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from '@/styles/easter-egg.module.scss'
 
-export default function EasterEgg() {
-  const [loaded, setLoaded] = useState(false)
+const audio = new Audio('/audio/jumpscare.mp3')
+export default function EasterEgg({ show }: { show: boolean }) {
   useEffect(() => {
-    const audio = new Audio('/audio/echo-jumpscare.mp3')
-    audio.play()
-    setLoaded(true)
-  }, [])
+    if (show) {
+      audio.play()
+    }
+  }, [show])
 
   return (
     <Image
-      src="/images/jump-scare.jpg"
+      src="/images/jumpscare.jpg"
       alt=""
       width="400"
       height="400"
-      className={`${styles.image} ${loaded && styles.active}`}
+      className={`${styles.image} ${show && styles.active}`}
     />
   )
 }
