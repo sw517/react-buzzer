@@ -1,3 +1,7 @@
+$svg-button-shadow: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
+$svg-button-active-shadow: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
+$svg-button-active-glow: drop-shadow(0px 0px 6px currentColor);
+
 .root--outlined {
   border: solid currentColor 1px;
   border-radius: 12px;
@@ -34,12 +38,19 @@
   transition: transform ease 0.2s;
   touch-action: manipulation;
 
-  &:active  {
+  &:active,
+  &.active  {
     transform: translateY(5px);
 
     .svg-button {
-      filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
+      filter: $svg-button-active-shadow $svg-button-active-glow;
     }
+  }
+
+  &:focus-visible {
+    outline: 0.5px solid currentColor;
+    outline-offset: -15px;
+    border-radius: 32px;
   }
 
   &--small {
@@ -61,7 +72,7 @@
 }
 
 .svg-button {
-  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
+  filter: $svg-button-shadow;
   transition: filter ease 0.2s;
 }
 

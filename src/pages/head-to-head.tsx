@@ -62,7 +62,7 @@ export default function HeadToHead() {
         onPress={onPress}
       />
 
-      <Modal open={modalOpen} onClose={handleModalClose}>
+      <Modal open={modalOpen} onClose={handleModalClose} disableAutoFocus>
         <Box sx={modalBoxStyle}>
           <Typography variant="h5">{lastBuzzerId} has buzzed in!</Typography>
           <Button onClick={() => setModalOpen(false)} className="mt-6">
