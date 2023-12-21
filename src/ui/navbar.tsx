@@ -39,10 +39,6 @@ function ResponsiveAppBar() {
 
   const clearUpEasterEgg = () => {
     logoTouchTime.current = 0
-    if (logoTouchTimeInterval.current) {
-      window.clearInterval(logoTouchTimeInterval.current)
-      logoTouchTimeInterval.current = undefined
-    }
     setShowEasterEgg(false)
   }
 
@@ -55,7 +51,12 @@ function ResponsiveAppBar() {
         setShowEasterEgg(true)
         setTimeout(() => {
           clearUpEasterEgg()
-        }, 5000)
+        }, 4000)
+
+        if (logoTouchTimeInterval.current) {
+          window.clearInterval(logoTouchTimeInterval.current)
+          logoTouchTimeInterval.current = undefined
+        }
       }
     }, 1000)
     logoTouchTimeInterval.current = intervalId
