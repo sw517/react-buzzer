@@ -46,7 +46,7 @@ function ResponsiveAppBar() {
   const onLogoTouchStart = (e: TouchEvent) => {
     e.preventDefault()
     const intervalId = window.setInterval(() => {
-      if (logoTouchTime.current < 6) {
+      if (logoTouchTime.current < 4) {
         logoTouchTime.current = logoTouchTime.current + 1
       } else {
         setShowEasterEgg(true)
