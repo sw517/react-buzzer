@@ -38,8 +38,10 @@ function ResponsiveAppBar() {
 
   const clearUpEasterEgg = () => {
     setShowEasterEgg(false)
+    logoTouchTime.current = 0
     if (logoTouchTimeInterval.current) {
       window.clearInterval(logoTouchTimeInterval.current)
+      logoTouchTimeInterval.current = undefined
     }
   }
 
@@ -81,6 +83,7 @@ function ResponsiveAppBar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              userSelect: 'none',
             }}
           >
             {title}
@@ -144,6 +147,7 @@ function ResponsiveAppBar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              userSelect: 'none',
             }}
           >
             {title}
