@@ -2,7 +2,7 @@ import AudioSelect from './audio-select'
 import ColorSelect from './color-select'
 import ColorPickerModal from './color-picker-modal'
 import BuzzerButton from './button'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { SelectChangeEvent, SelectProps } from '@mui/material/Select'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
@@ -37,8 +37,11 @@ export default function Buzzer({
 
   const [rotateClass, setRotateClass] = useState('')
 
+  const audio = useRef<HTMLAudioElement>()
+
   const handleBuzzerChange = (e: SelectChangeEvent) => {
     setSelectedBuzzerValue(e.target.value)
+    audio.current = new Audio(`/audio/${e.target.value}`)
   }
 
   const handleColorChange = (e: SelectChangeEvent) => {
@@ -46,9 +49,8 @@ export default function Buzzer({
   }
 
   const handlePlay = () => {
+    audio.current && audio.current.play()
     onPress && onPress(id)
-    const audio = new Audio(`/audio/${selectedBuzzerValue}`)
-    audio.play()
   }
 
   const handleRotate = () => {
@@ -66,6 +68,12 @@ export default function Buzzer({
         setRotateClass('')
     }
   }
+
+  useEffect(() => {
+    if (selectedBuzzerValue) {
+      audio.current = new Audio(`/audio/${selectedBuzzerValue}`)
+    }
+  })
 
   const rotatedSideways = ['rotate-90', 'rotate-270'].includes(rotateClass)
 
