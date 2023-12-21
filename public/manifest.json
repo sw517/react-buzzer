@@ -8,7 +8,7 @@
   "dir": "ltr",
   "orientation": "any",
   "scope": "/",
-  "short_name": "Buzzy McBuzzer",
+  "short_name": "Buzzer",
   "start_url": "/",
   "theme_color": "#ffffff",
   "categories": [
