@@ -46,9 +46,9 @@ export default function Buzzer({
   }
 
   const handlePlay = () => {
+    onPress && onPress(id)
     const audio = new Audio(`/audio/${selectedBuzzerValue}`)
     audio.play()
-    onPress && onPress(id)
   }
 
   const handleRotate = () => {
