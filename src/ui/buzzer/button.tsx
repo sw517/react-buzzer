@@ -65,7 +65,7 @@ export default function BuzzerButton({
             cy="50%"
             r="50%"
             fill={selectedColorValue}
-            className={`transform-gpu ${styles['svg-button']}`}
+            className={`${styles['svg-button']}`}
           />
           <ellipse
             cx="50%"
