@@ -41,6 +41,7 @@ export default function BuzzerButton({
   return (
     <button
       className={`
+        transform-gpu
         ${className}
         ${styles.button}
         ${small && styles['button--small']}
@@ -64,7 +65,7 @@ export default function BuzzerButton({
             cy="50%"
             r="50%"
             fill={selectedColorValue}
-            className={styles['svg-button']}
+            className={`transform-gpu ${styles['svg-button']}`}
           />
           <ellipse
             cx="50%"
