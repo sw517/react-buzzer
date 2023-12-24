@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { useState, MouseEvent, TouchEvent, useRef } from 'react'
+import { useState, MouseEvent } from 'react'
 import {
   AppBar,
   Box,
@@ -25,9 +25,6 @@ const title = 'Buzzy McBuzzer'
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
-  const logoTouchTime = useRef(0)
-  const logoTouchTimeInterval = useRef<number>()
-  const [showEasterEgg, setShowEasterEgg] = useState(false)
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -35,36 +32,6 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
-  }
-
-  const clearUpEasterEgg = () => {
-    logoTouchTime.current = 0
-    setShowEasterEgg(false)
-  }
-
-  const onLogoTouchStart = (e: TouchEvent) => {
-    e.preventDefault()
-    const intervalId = window.setInterval(() => {
-      if (logoTouchTime.current < 4) {
-        logoTouchTime.current = logoTouchTime.current + 1
-      } else {
-        setShowEasterEgg(true)
-        setTimeout(() => {
-          clearUpEasterEgg()
-        }, 4000)
-
-        if (logoTouchTimeInterval.current) {
-          window.clearInterval(logoTouchTimeInterval.current)
-          logoTouchTimeInterval.current = undefined
-        }
-      }
-    }, 1000)
-    logoTouchTimeInterval.current = intervalId
-  }
-
-  const onLogoTouchEnd = (e: TouchEvent) => {
-    e.preventDefault()
-    clearUpEasterEgg
   }
 
   return (
@@ -129,11 +96,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <GraphicEqIcon
-            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-            onTouchStart={onLogoTouchStart}
-            onTouchEnd={onLogoTouchEnd}
-          />
+          <EasterEgg className="flex md:hidden mr-3" />
           <Typography
             variant="h6"
             noWrap
@@ -169,7 +132,6 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
-      <EasterEgg show={showEasterEgg} />
     </AppBar>
   )
 }
